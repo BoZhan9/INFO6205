@@ -14,30 +14,40 @@ class DoublyLinkedList:
         node = ListNode(x)
         tail = self.head
         node.next = None
-        if head is None:
-            head.prev = None
+        if self.head is None:
+            node.prev = None
             self.head = node
             return
         while tail.next is not None:
             tail = tail.next
         
-        last.next = node
-        node.prev = last
+        tail.next = node
+        node.prev = tail
         self.size += 1
     
     def addToHead(self, x):
         node = ListNode(x)
-        node.next = head
+        node.next = self.head
         node.prev = None
-        if head is not None:
+        if self.head is not None:
             self.head.prev = node
         self.head = node
         self.size += 1
 
     def printSize(self):
-        return self.size
+        print("Size: " + str(self.size))
 
     def printList(self):
-        curr = head
-        while curr.next is not None:
-            print(curr.val + "")
+        curr = self.head
+        res = "List: "
+        while curr is not None:
+            res = res + str(curr.val) + " "
+            curr = curr.next
+        print(res)
+            
+d = DoublyLinkedList()
+d.addToTail(3)
+d.addToHead(4)
+d.addToTail(5)
+d.printList()
+d.printSize()
