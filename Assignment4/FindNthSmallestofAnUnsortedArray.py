@@ -9,7 +9,7 @@ class Solution:
         
         left = start
         right = end
-        mid = (left + r) // 2
+        mid = (left + right) // 2
         pivot = nums[mid]
 
         while left <= right:
