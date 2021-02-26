@@ -7,24 +7,25 @@ class Solution:
         if start == end or start >= end:
             return nums[start]
         
-        l= start
-        r = end
-        mid = (l + r) // 2
+        left = start
+        right = end
+        mid = (left + r) // 2
         pivot = nums[mid]
 
-        while l <= r:
-            while l <= r and nums[l] < pivot:
-                l += 1
-            while l <= r and nums[r] > pivot:
+        while left <= right:
+            while left <= right and nums[left] < pivot:
+                left += 1
+            while left <= right and nums[right] > pivot:
                 r -= 1
             
-            if l <= r:
-                nums[l], nums[r] = nums[r], nums[l]
-                l += 1
+            if left <= right:
+                nums[left], nums[r] = nums[right], nums[left]
+                left += 1
                 r -= 1
         
-        if start <= right and n <= r:
+        if start <= right and n <= right:
             return self.helper(nums, start, r, n)
-        if left <= end and n >= l:
-            return self.helper(nums, l, end, n)
+        if left <= end and n >= left:
+            return self.helper(nums, left, end, n)
+            
         return nums[n]

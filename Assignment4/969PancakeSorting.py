@@ -8,11 +8,13 @@ class Solution:
             if k == length: 
                 length -= 1
                 continue
+
             ans.append(k)
-            arr = arr[k-1::-1] + arr[k:]
+            arr = arr[k - 1:: -1] + arr[k:]
             ans.append(length)
-            arr = arr[length-1::-1] + arr[length:]
+            arr = arr[length - 1::-1] + arr[length:]
             length -= 1
+            
         return ans
         
         
