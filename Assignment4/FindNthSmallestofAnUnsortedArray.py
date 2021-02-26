@@ -16,16 +16,16 @@ class Solution:
             while left <= right and nums[left] < pivot:
                 left += 1
             while left <= right and nums[right] > pivot:
-                r -= 1
+                right -= 1
             
             if left <= right:
-                nums[left], nums[r] = nums[right], nums[left]
+                nums[left], nums[right] = nums[right], nums[left]
                 left += 1
-                r -= 1
+                right -= 1
         
         if start <= right and n <= right:
-            return self.helper(nums, start, r, n)
+            return self.helper(nums, start, right, n)
         if left <= end and n >= left:
             return self.helper(nums, left, end, n)
-            
+
         return nums[n]
